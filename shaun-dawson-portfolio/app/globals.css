@@ -46,12 +46,12 @@ body {
   filter: grayscale(100%) contrast(1.1) brightness(0.65);
 }
 
-/* Desktop background - visible by default */
+/* Desktop background  */
 .bg-desktop {
   opacity: 1;
 }
 
-/* Mobile background - hidden by default */
+/* Mobile background  */
 .bg-mobile {
   opacity: 0;
 }
@@ -342,7 +342,7 @@ body {
     flex: 1;
   }
 
-  /* Social icons - wrapping row at bottom left on mobile */
+  /* Social icons  */
   .social-satellite {
     position: fixed;
     bottom: 18.5vh;
@@ -367,7 +367,7 @@ body {
     height: 1.1em;
   }
 
-  /* Location satellite - aligned at bottom with bigger gap */
+  /* Location satellite  */
   .location-satellite {
     display: flex;
     bottom: 2.5vh;
