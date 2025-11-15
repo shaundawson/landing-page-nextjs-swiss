@@ -12,7 +12,7 @@ export default function Hero() {
             <div className="hero-bg">
                 {/* Desktop background */}
                 <Image
-                    src="/public/images/portrait5.jpg"
+                    src="/images/portrait5.jpg"
                     alt="Shaun Dawson"
                     fill
                     className="bg-image bg-desktop"
@@ -20,10 +20,11 @@ export default function Hero() {
                     quality={85}
                     sizes="100vw"
                     draggable={false}
+                    unoptimized={true}
                 />
                 {/* Mobile/Tablet background */}
                 <Image
-                    src="/public/images/mobile_bg.jpg"
+                    src="/images/mobile_bg.jpg"
                     alt="Shaun Dawson"
                     fill
                     className="bg-image bg-mobile"
@@ -31,6 +32,7 @@ export default function Hero() {
                     quality={85}
                     sizes="100vw"
                     draggable={false}
+                    unoptimized={true}
                 />
                 <div className="bg-overlay"></div>
             </div>
@@ -73,7 +75,7 @@ export default function Hero() {
                 <a href="https://substack.com/@iamsdawson" target="_blank" title="Substack">
                     <SiSubstack /><span>Substack</span>
                 </a>
-                <a href="https://www.imdb.com/name/nm17204388" target="_blank" title="IMDb">
+                <a href="https://imdb.com/name/nm0225488" target="_blank" title="IMDb">
                     <SiImdb /><span>IMDb</span>
                 </a>
             </div>
