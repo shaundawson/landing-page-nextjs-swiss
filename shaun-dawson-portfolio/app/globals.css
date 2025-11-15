@@ -1,0 +1,377 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hero {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* BACKGROUND IMAGE */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transform: scaleX(-1);
+}
+
+.bg-image {
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(100%) contrast(1.1) brightness(0.65);
+}
+
+/* Desktop background - visible by default */
+.bg-desktop {
+  opacity: 1;
+}
+
+/* Mobile background - hidden by default */
+.bg-mobile {
+  opacity: 0;
+}
+
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to left,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 50%,
+      rgba(0, 0, 0, 0.25) 100%);
+  z-index: 2;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* MAIN GRID  */
+.main-grid {
+  position: relative;
+  flex: 1;
+  padding: 0 7vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 0;
+  z-index: 15;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 15vh;
+}
+
+.content-column {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 640px;
+}
+
+/* TITLE */
+.section-title {
+  margin-bottom: 0;
+}
+
+.title-main {
+  font-weight: 300;
+  font-size: clamp(2.5rem, 4.8vw, 6.2rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.title-highlight {
+  font-weight: 700;
+  display: block;
+  margin-top: 0.04em;
+}
+
+/* BIO  */
+.section-bio {
+  font-weight: 400;
+  font-size: clamp(1rem, 1.05vw, 1.15rem);
+  line-height: 1.65;
+  color: #fff;
+  opacity: 0.85;
+  margin: 0;
+  margin-top: 4vh;
+  max-width: 640px;
+}
+
+/* BIO LINK - no underline, subtle hover */
+.bio-link {
+  color: orange;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+
+.bio-link:hover {
+  opacity: 1;
+}
+
+/* CTA BUTTONS  */
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 4vh;
+}
+
+/* DOWNLOAD CV BUTTON */
+.download-btn {
+  padding: 0.7rem 1.75rem;
+  border: 1.5px solid #fff;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  background: transparent;
+  text-decoration: none;
+  transition: all 0.25s;
+  display: inline-block;
+}
+
+.download-btn:hover {
+  background: transparent;
+  opacity: 0.75;
+}
+
+/* CONTACT BUTTON  */
+.contact-btn {
+  padding: 0.7rem 1.75rem;
+  border: 1.5px solid #fff;
+  border-radius: 2px;
+  color: #0a0a0a;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  background: #fff;
+  text-decoration: none;
+  transition: all 0.25s;
+  display: inline-block;
+}
+
+.contact-btn:hover {
+  background: #fff;
+  opacity: 0.85;
+}
+
+/* SOCIAL */
+.social-satellite {
+  position: fixed;
+  bottom: 4vh;
+  right: 7vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  z-index: 20;
+}
+
+.social-satellite a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: all 0.25s ease;
+}
+
+.social-satellite a:hover {
+  opacity: 1;
+}
+
+.social-satellite svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+.social-satellite span {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* LOCATION */
+.location-satellite {
+  position: fixed;
+  bottom: 4vh;
+  left: 7vw;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #fff;
+  opacity: 0.7;
+  z-index: 20;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+
+  /* Switch to mobile background */
+  .bg-desktop {
+    opacity: 0;
+  }
+
+  .bg-mobile {
+    opacity: 1;
+  }
+
+  .main-grid {
+    padding: 0 6vw;
+    padding-bottom: 18vh;
+  }
+
+  .content-column {
+    max-width: 100%;
+  }
+
+  .title-main {
+    font-size: clamp(2.2rem, 5.2vw, 5rem);
+  }
+
+  .section-bio {
+    max-width: 100%;
+  }
+
+  .social-satellite {
+    bottom: 3vh;
+    right: 6vw;
+  }
+
+  .social-satellite span {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-grid {
+    padding: 0 6vw;
+    padding-top: 8vh;
+    padding-bottom: 22vh;
+    align-items: start;
+  }
+
+  .content-column {
+    gap: 0;
+    margin-top: 7vh;
+  }
+
+  .section-title {
+    margin-bottom: 0;
+  }
+
+  .title-main {
+    font-size: clamp(1.9rem, 8vw, 3.8rem);
+  }
+
+  .section-bio {
+    font-size: 0.96rem;
+    line-height: 1.7;
+    margin-top: 3vh;
+  }
+
+  .nav-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    align-items: center;
+    margin-top: 3vh;
+  }
+
+  .download-btn,
+  .contact-btn {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.85rem;
+    flex: 1;
+  }
+
+  /* Social icons - wrapping row at bottom left on mobile */
+  .social-satellite {
+    position: fixed;
+    bottom: 18.5vh;
+    left: 6vw;
+    right: 6vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .social-satellite a {
+    gap: 0.4rem;
+  }
+
+  .social-satellite span {
+    display: inline;
+    font-size: 0.7rem;
+  }
+
+  .social-satellite svg {
+    width: 1.1em;
+    height: 1.1em;
+  }
+
+  /* Location satellite - aligned at bottom with bigger gap */
+  .location-satellite {
+    display: flex;
+    bottom: 2.5vh;
+    left: 6vw;
+    right: auto;
+  }
+}
