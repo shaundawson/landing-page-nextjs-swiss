@@ -12,7 +12,7 @@ export default function Hero() {
             <div className="hero-bg">
                 {/* Desktop background */}
                 <Image
-                    src="public/images/portrait5.jpg"
+                    src="/public/images/portrait5.jpg"
                     alt="Shaun Dawson"
                     fill
                     className="bg-image bg-desktop"
@@ -23,7 +23,7 @@ export default function Hero() {
                 />
                 {/* Mobile/Tablet background */}
                 <Image
-                    src="public/images/mobile_bg.jpg"
+                    src="/public/images/mobile_bg.jpg"
                     alt="Shaun Dawson"
                     fill
                     className="bg-image bg-mobile"
