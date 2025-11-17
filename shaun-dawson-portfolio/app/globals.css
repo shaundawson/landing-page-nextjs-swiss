@@ -14,8 +14,8 @@ body {
   padding: 0;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
-  background: #0a0a0a;
-  color: #fff;
+  background: #0f0f0f;
+  color: #f5f5f0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -63,9 +63,9 @@ body {
   right: 0;
   bottom: 0;
   background: linear-gradient(to left,
-      rgba(0, 0, 0, 0.75) 0%,
-      rgba(0, 0, 0, 0.45) 50%,
-      rgba(0, 0, 0, 0.25) 100%);
+      rgba(15, 15, 15, 0.75) 0%,
+      rgba(15, 15, 15, 0.45) 50%,
+      rgba(15, 15, 15, 0.25) 100%);
   z-index: 2;
 }
 
@@ -124,7 +124,7 @@ body {
   font-size: clamp(2.5rem, 4.8vw, 6.2rem);
   line-height: 0.85;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: #f5f5f0;
   margin: 0;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
@@ -140,8 +140,8 @@ body {
   font-weight: 400;
   font-size: clamp(1rem, 1.05vw, 1.15rem);
   line-height: 1.65;
-  color: #fff;
-  opacity: 0.85;
+  color: #e8e8e3;
+  opacity: 0.9;
   margin: 0;
   margin-top: 4vh;
   max-width: 640px;
@@ -149,9 +149,9 @@ body {
 
 /* BIO LINK - no underline, subtle hover */
 .bio-link {
-  color: orange;
+  color: #ff9f5a;
   text-decoration: none;
-  opacity: 0.85;
+  opacity: 0.9;
   transition: opacity 0.25s ease;
 }
 
@@ -170,9 +170,9 @@ body {
 /* DOWNLOAD CV BUTTON */
 .download-btn {
   padding: 0.7rem 1.75rem;
-  border: 1.5px solid #fff;
+  border: 1.5px solid #e8e8e3;
   border-radius: 2px;
-  color: #fff;
+  color: #e8e8e3;
   font-weight: 500;
   font-size: 0.875rem;
   letter-spacing: 0.01em;
@@ -180,31 +180,38 @@ body {
   text-decoration: none;
   transition: all 0.25s;
   display: inline-block;
+  cursor: pointer;
 }
 
 .download-btn:hover {
-  background: transparent;
-  opacity: 0.75;
+  background: rgba(232, 232, 227, 0.08);
+  opacity: 0.85;
 }
 
 /* CONTACT BUTTON  */
 .contact-btn {
   padding: 0.7rem 1.75rem;
-  border: 1.5px solid #fff;
+  border: 1.5px solid #e8e8e3;
   border-radius: 2px;
-  color: #0a0a0a;
+  color: #1a1a1a;
   font-weight: 500;
   font-size: 0.875rem;
   letter-spacing: 0.01em;
-  background: #fff;
+  background: #e8e8e3;
   text-decoration: none;
   transition: all 0.25s;
   display: inline-block;
 }
 
 .contact-btn:hover {
-  background: #fff;
-  opacity: 0.85;
+  background: #d8d8d3;
+  opacity: 0.95;
+}
+
+button.contact-btn,
+button.download-btn {
+  cursor: pointer;
+  font-family: inherit;
 }
 
 /* SOCIAL */
@@ -223,7 +230,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #fff;
+  color: #e8e8e3;
   text-decoration: none;
   opacity: 0.85;
   transition: all 0.25s ease;
@@ -256,8 +263,8 @@ body {
   gap: 0.5rem;
   font-size: 0.78rem;
   font-weight: 400;
-  color: #fff;
-  opacity: 0.7;
+  color: #e8e8e3;
+  opacity: 0.75;
   z-index: 20;
 }
 
@@ -373,5 +380,191 @@ body {
     bottom: 2.5vh;
     left: 6vw;
     right: auto;
+  }
+}
+
+/* MODAL STYLES */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 15, 15, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: rgba(20, 20, 20, 0.92);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(232, 232, 227, 0.15);
+  border-radius: 4px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 3rem 2.5rem;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  color: #e8e8e3;
+  cursor: pointer;
+  padding: 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  opacity: 1;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin: 0 0 2rem 0;
+  color: #f5f5f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+}
+
+/* HubSpot Form Overrides - Clean Modern Design */
+#hubspot-form-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif !important;
+}
+
+#hubspot-form-container .hs-form {
+  font-family: inherit;
+}
+
+#hubspot-form-container .hs-form-field {
+  margin-bottom: 1.5rem;
+}
+
+#hubspot-form-container label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(232, 232, 227, 0.7);
+  margin-bottom: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+}
+
+#hubspot-form-container input[type="text"],
+#hubspot-form-container input[type="email"],
+#hubspot-form-container input[type="tel"],
+#hubspot-form-container textarea,
+#hubspot-form-container select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(232, 232, 227, 0.04);
+  border: 1px solid rgba(232, 232, 227, 0.2);
+  border-radius: 2px;
+  color: #f5f5f0;
+  font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif !important;
+  transition: all 0.2s ease;
+}
+
+#hubspot-form-container input:focus,
+#hubspot-form-container textarea:focus,
+#hubspot-form-container select:focus {
+  outline: none;
+  border-color: rgba(232, 232, 227, 0.4);
+  background: rgba(232, 232, 227, 0.06);
+}
+
+#hubspot-form-container textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+#hubspot-form-container .hs-button {
+  width: 100%;
+  padding: 0.75rem 1.75rem;
+  border: 1.5px solid #e8e8e3 !important;
+  border-radius: 2px !important;
+  background: #e8e8e3 !important;
+  color: #1a1a1a !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.01em !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  margin-top: 1rem !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif !important;
+}
+
+#hubspot-form-container .hs-button:hover {
+  background: #d8d8d3 !important;
+  opacity: 0.95 !important;
+}
+
+#hubspot-form-container .hs-error-msgs {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0.5rem 0 0 0 !important;
+}
+
+#hubspot-form-container .hs-error-msg {
+  font-size: 0.75rem !important;
+  color: #ff6b6b !important;
+  margin-top: 0.25rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif !important;
+}
+
+#hubspot-form-container .hs-form-required {
+  color: rgba(232, 232, 227, 0.5) !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 700px) {
+  .modal-content {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 }

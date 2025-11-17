@@ -1,11 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { SiSubstack, SiImdb } from 'react-icons/si'
+import ContactModal from './ContactModal'
 
 export default function Hero() {
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
     return (
         <div className="hero">
             {/* Background image */}
@@ -48,20 +51,34 @@ export default function Hero() {
                         </h1>
                     </div>
 
-                    {/* Bio - constrained to title width */}
+                    {/* Bio */}
                     <p className="section-bio">
-                        Storyteller through film and code. Shaun Dawson creates disruptive work at <a href="https://meshaestudios.com" target="_blank" rel="noopener noreferrer" className="bio-link">Meshae Studios</a>. Filmmaker. React developer. Technical consultant. Obsessed with stories that shift perspective, design systems with integrity, and interfaces that respect your intelligence.
+                        Storyteller through film and code. Shaun Dawson creates disruptive work at <a href="https://meshaestudios.com" target="_blank" rel="noopener noreferrer" className="bio-link">Meshae Studios</a>.  Filmmaker. React developer. Technical consultant. Obsessed with stories that shift perspective, design systems with integrity, and interfaces that respect your intelligence.
                     </p>
 
-                    {/* Buttons moved below bio */}
+                    {/* CTA Buttons */}
                     <div className="nav-actions">
-                        <a href="/cv.pdf" className="download-btn">Download CV</a>
-                        <a href="mailto:iamsdawson@gmail.com" className="contact-btn">Contact</a>
+                        <a
+                            href="https://5688825.fs1.hubspotusercontent-na1.net/hubfs/5688825/iamsawson.com/ShaunDawsonResume.png"
+                            className="download-btn"
+                            download="Shaun-Dawson-Resume.png"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Download CV
+                        </a>
+                        <button
+                            type="button"
+                            onClick={() => setIsModalOpen(true)}
+                            className="contact-btn"
+                        >
+                            Contact
+                        </button>
                     </div>
                 </div>
             </div>
 
-            {/* Social satellite - fixed bottom right */}
+            {/* Social satellite  */}
             <div className="social-satellite">
                 <a href="https://linkedin.com/in/iamsdawson" target="_blank" title="LinkedIn">
                     <FaLinkedin /><span>LinkedIn</span>
@@ -80,11 +97,14 @@ export default function Hero() {
                 </a>
             </div>
 
-            {/* Location satellite - mobile only, bottom left */}
+            {/* Location satellite */}
             <div className="location-satellite">
                 <span className="status-dot"></span>
                 <span>Jacksonville, FL — Available for select projects</span>
             </div>
+
+            {/* Contact Modal */}
+            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     );
 }
