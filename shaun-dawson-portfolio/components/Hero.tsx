@@ -15,7 +15,7 @@ export default function Hero() {
             <div className="hero-bg">
                 {/* Desktop background */}
                 <Image
-                    src="/images/portrait5.jpg"
+                    src="/images/portrait8.jpg"
                     alt="Shaun Dawson"
                     fill
                     className="bg-image bg-desktop"
