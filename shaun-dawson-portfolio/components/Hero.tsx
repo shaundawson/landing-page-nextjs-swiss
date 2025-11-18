@@ -27,7 +27,7 @@ export default function Hero() {
                 />
                 {/* Mobile/Tablet background */}
                 <Image
-                    src="/images/mobile_bg.jpg"
+                    src="/images/portrait9.jpg"
                     alt="Shaun Dawson"
                     fill
                     className="bg-image bg-mobile"
@@ -92,7 +92,7 @@ export default function Hero() {
                 <a href="https://substack.com/@iamsdawson" target="_blank" title="Substack">
                     <SiSubstack /><span>Substack</span>
                 </a>
-                <a href="https://imdb.com/name/nm0225488" target="_blank" title="IMDb">
+                <a href="https://www.imdb.com/name/nm17204388" target="_blank" title="IMDb">
                     <SiImdb /><span>IMDb</span>
                 </a>
             </div>
