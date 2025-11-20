@@ -59,7 +59,7 @@ export default function Hero() {
                     {/* CTA Buttons */}
                     <div className="nav-actions">
                         <a
-                            href="https://5688825.fs1.hubspotusercontent-na1.net/hubfs/5688825/iamsawson.com/ShaunDawsonResume.png"
+                            href="https://5688825.fs1.hubspotusercontent-na1.net/hubfs/5688825/iamsawson.com/ShaunDawsonCV.pdf"
                             className="download-btn"
                             download="Shaun-Dawson-Resume.png"
                             target="_blank"
