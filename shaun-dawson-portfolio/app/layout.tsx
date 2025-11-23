@@ -24,7 +24,7 @@ export const meta: Metadata = {
     url: 'https://iamsdawson.com',
     siteName: 'Shaun Dawson',
     title: 'Shaun Dawson | Storyteller & Front-End Developer',
-    description: 'Award-winning filmmaker and full-stack web developer creating disruptive digital experiences and compelling visual stories.',
+    description: 'Award-winning filmmaker and front-end web developer creating disruptive digital experiences and compelling visual stories.',
     images: [
       {
         url: 'https://iamsdawson.com/og-image.jpg',
@@ -40,7 +40,7 @@ export const meta: Metadata = {
     site: '@iamsdawson',
     creator: '@iamsdawson',
     title: 'Shaun Dawson | Storyteller & Front-End Developer',
-    description: 'Award-winning filmmaker and full-stack web developer specializing in React and storytelling.',
+    description: 'Award-winning filmmaker and front-end web developer creating disruptive digital experiences and compelling visual stories',
     images: ['https://iamsdawson.com/og-image.jpg'],
   },
   robots: {
@@ -68,6 +68,15 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased bg-white text-black">
         {children}
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-59JDW44VMF"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-59JDW44VMF');
+        </script>
       </body>
     </html>
   )
