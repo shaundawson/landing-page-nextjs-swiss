@@ -53,8 +53,7 @@ export default function Hero() {
 
                     {/* Bio */}
                     <p className="section-bio">
-                        Storyteller through film and code. Shaun Dawson creates disruptive work at <a href="https://meshaestudios.com" target="_blank" rel="noopener noreferrer" className="bio-link">Meshae Studios</a>.  Filmmaker. React developer. Technical consultant. Obsessed with stories that shift perspective, design systems with integrity, and interfaces that respect your intelligence.
-                    </p>
+                        Storyteller at the intersection of race, technology and social justice. Shaun Dawson is an award-winning filmmaker and front-end developer who crafts narratives that challenge perspective at <a href="https://meshaestudios.com" target="_blank" rel="noopener noreferrer" className="bio-link">Meshae Studios</a> . With 9 years of solving complex technical problems for enterprise clients (Vimeo, Confiant, HubSpot) and deep expertise in React, AWS, and product strategy, Shaun brings both cinematic precision and technical mastery to work that actually moves something.</p>
 
                     {/* CTA Buttons */}
                     <div className="nav-actions">
