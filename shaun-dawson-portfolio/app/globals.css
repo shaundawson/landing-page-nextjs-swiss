@@ -253,6 +253,12 @@ button.download-btn {
   white-space: nowrap;
 }
 
+@supports (padding: max(0px)) {
+  .social-satellite {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
+
 /* LOCATION */
 .location-satellite {
   position: fixed;
@@ -316,7 +322,7 @@ button.download-btn {
   .main-grid {
     padding: 0 6vw;
     padding-top: 8vh;
-    padding-bottom: 22vh;
+    padding-bottom: 26vh;
     align-items: start;
   }
 
@@ -351,13 +357,13 @@ button.download-btn {
   .contact-btn {
     padding: 0.65rem 1.2rem;
     font-size: 0.85rem;
-    flex: 1;
+    /* flex: 1; */
   }
 
   /* Social icons  */
   .social-satellite {
     position: fixed;
-    bottom: 18.5vh;
+    bottom: 10vh;
     left: 6vw;
     right: 6vw;
     flex-direction: row;
@@ -385,6 +391,7 @@ button.download-btn {
     bottom: 2.5vh;
     left: 6vw;
     right: auto;
+    display: none;
   }
 }
 
