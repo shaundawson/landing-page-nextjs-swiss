@@ -1,109 +1,125 @@
 'use client'
 
 import React, { useState } from 'react'
-import Image from 'next/image'
-import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
-import { SiSubstack, SiImdb } from 'react-icons/si'
 import ContactModal from './ContactModal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub, faLinkedinIn, faInstagram, faImdb } from '@fortawesome/free-brands-svg-icons'
 
 export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
+    const socialLinks = [
+        { name: 'LinkedIn', icon: faLinkedinIn, url: 'https://linkedin.com/in/iamsdawson' },
+        { name: 'IMDB', icon: faImdb, url: 'https://www.imdb.com/name/nm17204388' },
+        { name: 'Instagram', icon: faInstagram, url: 'https://instagram.com/iamsdawson' },
+        { name: 'GitHub', icon: faGithub, url: 'https://github.com/shaundawson' }
+    ]
+
+    const handleContactClick = () => {
+        setIsModalOpen(true)
+    }
+
     return (
         <div className="hero">
-            {/* Background image */}
+            {/* Background */}
             <div className="hero-bg">
-                {/* Desktop background */}
-                <Image
-                    src="/images/portrait8.jpg"
-                    alt="Shaun Dawson"
-                    fill
-                    className="bg-image bg-desktop"
-                    priority
-                    quality={85}
-                    sizes="100vw"
-                    draggable={false}
-                    unoptimized={true}
-                />
-                {/* Mobile/Tablet background */}
-                <Image
-                    src="/images/portrait9.jpg"
-                    alt="Shaun Dawson"
-                    fill
-                    className="bg-image bg-mobile"
-                    priority
-                    quality={85}
-                    sizes="100vw"
-                    draggable={false}
-                    unoptimized={true}
-                />
                 <div className="bg-overlay"></div>
             </div>
 
-            {/* Content */}
-            <div className="main-grid">
-                <div className="content-column">
-                    {/* Title */}
-                    <div className="section-title">
-                        <h1 className="title-main">
-                            Storyteller<br />
-                            <span className="title-highlight">Front-End Developer</span>
-                        </h1>
-                    </div>
+            {/* TOP LEFT - Menu Icon */}
+            <div className="top-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101010" strokeWidth="2.5">
+                    <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" />
+                </svg>
+            </div>
 
-                    {/* Bio */}
-                    <p className="section-bio">
-                        Storyteller at the intersection of race, technology and social justice. Shaun Dawson is an award-winning filmmaker and front-end developer who crafts narratives that challenge perspective at <a href="https://meshaestudios.com" target="_blank" rel="noopener noreferrer" className="bio-link">Meshae Studios</a> . With 9 years of solving complex technical problems for enterprise clients (Vimeo, Confiant, HubSpot) and deep expertise in React, AWS, and product strategy, Shaun brings both cinematic precision and technical mastery to work that actually moves something.</p>
+            {/* TOP CENTER - VISUAL LANGUAGE info */}
+            <div className="top-center-info">
+                <span className="top-label">SHAUN DAWSON</span>
+                <span className="top-sub">Storyteller — Front-End Developer</span>
+            </div>
 
-                    {/* CTA Buttons */}
-                    <div className="nav-actions">
-                        <a
-                            href="https://5688825.fs1.hubspotusercontent-na1.net/hubfs/5688825/iamsawson.com/ShaunDawsonCV.pdf"
-                            className="download-btn"
-                            download="Shaun-Dawson-Resume.png"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Download CV
-                        </a>
-                        <button
-                            type="button"
-                            onClick={() => setIsModalOpen(true)}
-                            className="contact-btn"
-                        >
-                            Contact
-                        </button>
-                    </div>
+            {/* TOP RIGHT - SOCIAL MEDIA ICONS */}
+            <div className="top-social-links">
+                {socialLinks.map((link) => (
+                    <a
+                        key={link.name}
+                        href={link.url}
+                        className={`top-social-icon ${link.large ? 'top-social-icon--large' : ''}`}
+                        title={link.name}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <FontAwesomeIcon icon={link.icon} />
+                    </a>
+                ))}
+            </div>
+
+            {/* MAIN CONTENT (unchanged) */}
+            <div className="main-content">
+                <div className="content-section section-1">
+                    <span className="tag-label">I tell stories.</span>
+                </div>
+
+                <div className="content-section section-2">
+                    <h1 className="headline">
+                        Storyteller at the intersection of race, technology and social justice. Shaun Dawson is an  filmmaker and web developer who crafts narratives that challenge perspective .
+                    </h1>
+                </div>
+
+                <div className="content-section section-3">
+                    <p className="body-text">
+                        With 9 years of solving complex technical problems and deep expertise in React, AWS, and product strategy, Shaun brings both cinematic precision and technical mastery to work that actually moves something.
+                    </p>
                 </div>
             </div>
 
-            {/* Social satellite  */}
-            <div className="social-satellite">
-                <a href="https://linkedin.com/in/iamsdawson" target="_blank" title="LinkedIn">
-                    <FaLinkedin /><span>LinkedIn</span>
-                </a>
-                <a href="https://github.com/shaundawson" target="_blank" title="Github">
-                    <FaGithub /><span>Github</span>
-                </a>
-                <a href="https://instagram.com/iamsdawson" target="_blank" title="Instagram">
-                    <FaInstagram /><span>Instagram</span>
-                </a>
-                <a href="https://substack.com/@iamsdawson" target="_blank" title="Substack">
-                    <SiSubstack /><span>Substack</span>
-                </a>
-                <a href="https://www.imdb.com/name/nm17204388" target="_blank" title="IMDb">
-                    <SiImdb /><span>IMDb</span>
+            {/* BOTTOM LEFT - VIEW PORTFOLIO */}
+            <div className="bottom-left">
+                <a
+                    href="https://meshaestudios.com/"
+                    className="bottom-left-link"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <span className="bottom-label">View Portfolio</span>
+                    <span className="visit-site">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#101010" strokeWidth="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span>meshaestudios.com</span>
+                    </span>
                 </a>
             </div>
 
-            {/* Location satellite */}
-            <div className="location-satellite">
-                <span className="status-dot"></span>
-                <span>Jacksonville, FL — Available for select projects</span>
+            {/* BOTTOM CENTER */}
+            <div className="bottom-center">
+                <span className="copyright-text">© 2025.All Rights Reserved. — Shaun Dawson.</span>
+            </div>
+
+            {/* BOTTOM RIGHT - CONTACT */}
+            <div className="bottom-right">
+                <button
+                    onClick={handleContactClick}
+                    className="contact-label-button"
+                    type="button"
+                >
+                    <span className="bottom-label">Contact</span>
+                </button>
+                <button
+                    onClick={handleContactClick}
+                    className="visit-site"
+                    type="button"
+                >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#101010" strokeWidth="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span>Send Shaun a Message</span>
+                </button>
             </div>
 
             {/* Contact Modal */}
             <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
-    );
+    )
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import '../lib/fontawesome'
 import Script from 'next/script'
 
 export const meta: Metadata = {
