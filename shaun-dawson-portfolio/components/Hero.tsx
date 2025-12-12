@@ -45,7 +45,7 @@ export default function Hero() {
                     <a
                         key={link.name}
                         href={link.url}
-                        className={`top-social-icon ${link.large ? 'top-social-icon--large' : ''}`}
+                        className="top-social-icon"
                         title={link.name}
                         target="_blank"
                         rel="noreferrer"
