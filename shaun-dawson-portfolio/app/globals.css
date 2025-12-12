@@ -8,11 +8,10 @@
 
 html,
 body {
-  width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  width: 100%;
+  min-height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
   background: #e6ff02;
   color: #111111;
@@ -20,100 +19,99 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Body can scroll if other pages need it; hero itself will clip to viewport */
+body {
+  overflow-x: hidden;
+}
+
+/* HERO WRAPPER */
+/* Use 100vh as fallback and 100svh where available for better mobile behavior */
 .hero {
-  width: 100vw;
-  height: 100vh;
   position: relative;
-  overflow: hidden;
+  height: 100vh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   background: #e6ff02;
+  color: #111111;
+  padding: 2.5rem 2.5rem 2.5rem;
+  overflow: hidden;
 }
 
 /* BACKGROUND */
 .hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
   background: #e6ff02;
 }
 
 .bg-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: #e6ff02;
-  z-index: 2;
 }
 
-/* TOP LEFT - Menu Icon */
-.top-icon {
-  position: fixed;
-  top: 2.5rem;
-  left: 2.5rem;
-  z-index: 10;
-  width: 20px;
-  height: 20px;
-  display: flex;
+/* LAYOUT: header, main, footer sit above background */
+.hero-header,
+.main-content,
+.hero-footer {
+  position: relative;
+  z-index: 5;
+}
+
+/* HEADER */
+.hero-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: center;
-  color: #111111;
+  column-gap: 1rem;
+  margin-bottom: 2.25rem;
 }
 
-.top-icon svg {
-  width: 20px;
-  height: 20px;
+/* Left spacer (empty but keeps the 3-column grid) */
+.hero-header>div:first-child {
+  justify-self: start;
 }
 
-/* TOP CENTER - VISUAL LANGUAGE */
+/* TOP CENTER - Name + role */
 .top-center-info {
-  position: fixed;
-  top: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  justify-self: center;
+  text-align: center;
 }
 
 .top-label {
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
   text-transform: uppercase;
   color: #111111;
-  font-size: .75rem;
+  font-size: 0.75rem;
   font-weight: 900;
   line-height: 1;
 }
 
 .top-sub {
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   color: #111111;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.2;
 }
 
-/* TOP RIGHT - SOCIAL MEDIA ICONS */
+/* TOP RIGHT - Social icons */
 .top-social-links {
-  position: fixed;
-  top: 2.5rem;
-  right: 2.5rem;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  justify-self: end;
 }
 
 .top-social-icon {
   width: 24px;
   height: 24px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #111111;
@@ -122,6 +120,10 @@ body {
   text-decoration: none;
 }
 
+.top-social-icon:hover {
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
 
 .top-social-icon svg,
 .top-social-icon path,
@@ -130,12 +132,8 @@ body {
   height: 100%;
 }
 
-
-
-/* MAIN CONTENT - Progressive Indentation */
+/* MAIN CONTENT */
 .main-content {
-  position: relative;
-  z-index: 15;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -144,51 +142,51 @@ body {
   pointer-events: none;
 }
 
+/* let inner content be clickable */
 .content-section {
   display: flex;
   flex-direction: column;
+  pointer-events: auto;
 }
 
-/* Section 1 - Tag (Closest to left margin) */
+/* Desktop-style progressive indentation */
 .section-1 {
   padding-left: 9vw;
   padding-right: 7vw;
 }
 
-/* Section 2 - Main Headline (Indent more) */
 .section-2 {
   padding-left: 13vw;
   padding-right: 25vw;
 }
 
-/* Section 3 - Body Text (Indent even more) */
 .section-3 {
   padding-left: 17vw;
   padding-right: 35vw;
 }
 
-/* TAG LABEL - Large and bold */
+/* TAG LABEL */
 .tag-label {
   color: #e6ff02;
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
   text-transform: uppercase;
   background: #111111;
   width: fit-content;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   font-size: 2.2rem;
   font-weight: 900;
   line-height: 1.2;
   display: inline-block;
 }
 
-/* HEADLINE - Large main text */
+/* HEADLINE */
 .headline {
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
   color: #111111;
   text-shadow: none;
   max-width: 100%;
   margin: 0;
-  font-size: clamp(2.5rem, 3.5vw, 7rem);
+  font-size: clamp(2.4rem, 3.2vw, 4.2rem);
   font-weight: 900;
   line-height: 0.95;
 }
@@ -196,20 +194,27 @@ body {
 /* BODY TEXT */
 .body-text {
   color: #111111;
-  letter-spacing: -.01em;
-  max-width: 25vw;
+  letter-spacing: -0.01em;
+  max-width: 28rem;
   margin: 0;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 1.15vw, 1.2rem);
   font-weight: 400;
   line-height: 1.65;
 }
 
-/* BOTTOM LEFT - VISUAL LANGUAGE */
+/* FOOTER – desktop/tablet: 3 columns
+   left: View Portfolio
+   center: Copyright
+   right: Contact + Send Shaun a Message */
+.hero-footer {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: flex-end;
+  margin-top: 2.25rem;
+}
+
+/* BOTTOM LEFT – View Portfolio */
 .bottom-left {
-  position: fixed;
-  bottom: 2.5rem;
-  left: 2.5rem;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -229,7 +234,7 @@ body {
 }
 
 .bottom-label {
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
   text-transform: uppercase;
   color: #111111;
   font-size: 1.75rem;
@@ -237,39 +242,10 @@ body {
   line-height: 1;
 }
 
-.visit-site {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #111111;
-  text-decoration: none;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.visit-site:hover {
-  opacity: 0.7;
-}
-
-.visit-site svg {
-  width: 14px;
-  height: 14px;
-  stroke: #111111;
-}
-
-/* BOTTOM CENTER - Copyright */
+/* BOTTOM CENTER – Copyright (desktop/tablet) */
 .bottom-center {
-  position: fixed;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  justify-self: center;
+  text-align: center;
 }
 
 .copyright-text {
@@ -280,12 +256,8 @@ body {
   line-height: 1;
 }
 
-/* BOTTOM RIGHT - CONTACT */
+/* BOTTOM RIGHT – Contact + CTA (desktop/tablet) */
 .bottom-right {
-  position: fixed;
-  bottom: 2.5rem;
-  right: 2.5rem;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -320,7 +292,34 @@ body {
   display: block;
 }
 
-/* MODAL STYLING  */
+/* VISIT-SITE / CTA STYLE (shared) */
+.visit-site {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #111111;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.visit-site:hover {
+  opacity: 0.7;
+}
+
+.visit-site svg {
+  width: 14px;
+  height: 14px;
+  stroke: #111111;
+}
+
+/* MODAL */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -382,18 +381,15 @@ body {
   stroke: #e6ff02 !important;
 }
 
-/* HubSpot form – make it match hero */
+/* HubSpot form */
 #hubspot-form-container .hbspt-form {
   color: #e6ff02 !important;
 }
-
-
 
 #hubspot-form-container .hbspt-form fieldset,
 #hubspot-form-container .hbspt-form .hs-form-field {
   margin-bottom: 1rem;
 }
-
 
 #hubspot-form-container .hbspt-form label {
   font-weight: 700;
@@ -428,7 +424,6 @@ body {
   box-shadow: 0 2px 0 0 #e6ff02;
 }
 
-/* Submit button */
 #hubspot-form-container .hbspt-form .hs-submit {
   margin-top: 1.25rem;
 }
@@ -452,121 +447,268 @@ body {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
-/* RESPONSIVE */
+/* ============ RESPONSIVE BREAKPOINTS ============ */
+
+/* Large tablets / small laptops */
 @media (max-width: 1200px) {
   .section-2 {
-    padding-right: 20vw;
+    padding-right: 18vw;
   }
 
   .section-3 {
-    padding-right: 30vw;
+    padding-right: 24vw;
   }
 
   .headline {
-    font-size: clamp(2.2rem, 4.8vw, 6rem);
+    font-size: clamp(2.1rem, 3.6vw, 3.6rem);
   }
 }
 
+/* Tablets */
 @media (max-width: 900px) {
-  .section-1 {
-    padding-left: 8vw;
+  .hero {
+    padding: 2rem 1.5rem 2rem;
   }
 
-  .section-2 {
-    padding-left: 11vw;
-    padding-right: 15vw;
+  .hero-header {
+    margin-bottom: 2rem;
   }
 
+  .section-1,
+  .section-2,
   .section-3 {
-    padding-left: 14vw;
-    padding-right: 25vw;
+    padding-left: 8vw;
+    padding-right: 8vw;
   }
 
   .headline {
-    font-size: clamp(2rem, 4.5vw, 5rem);
+    font-size: clamp(1.9rem, 4vw, 3.2rem);
   }
 
   .body-text {
-    font-size: 0.92rem;
+    font-size: 0.98rem;
+    max-width: 100%;
+  }
+
+  .hero-footer {
+    margin-top: 2rem;
+  }
+
+  .bottom-right .bottom-label {
+    font-size: 1.5rem;
+  }
+
+  .bottom-label {
+    font-size: 1.6rem;
+  }
+
+  /* slightly smaller social icons on midsize screens */
+  .top-social-icon {
+    width: 20px;
+    height: 20px;
   }
 }
 
+/* Small tablets / large phones */
 @media (max-width: 768px) {
+  .hero {
+    padding: 1.75rem 1.25rem 1.75rem;
+  }
+
+  .hero-header {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    row-gap: 0.4rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-header>div:first-child {
+    display: none;
+    /* hide spacer on narrow widths */
+  }
+
+  .top-center-info {
+    grid-column: 1 / -1;
+    order: 2;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .top-social-links {
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-self: flex-end;
+    order: 1;
+  }
+
+  .top-social-icon {
+    width: 18px;
+    height: 18px;
+  }
+
   .main-content {
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
-  .section-1 {
-    padding-left: 6vw;
-    padding-right: 6vw;
-  }
-
-  .section-2 {
-    padding-left: 8vw;
-    padding-right: 6vw;
-  }
-
+  .section-1,
+  .section-2,
   .section-3 {
-    padding-left: 10vw;
-    padding-right: 6vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 
   .headline {
-    font-size: clamp(1.8rem, 5vw, 3.5rem);
-    line-height: 0.9;
+    font-size: clamp(1.7rem, 4.6vw, 2.4rem);
+    line-height: 1;
   }
 
   .tag-label {
-    font-size: 0.65rem;
-    padding: 0.6rem 1.2rem;
+    font-size: 1.3rem;
+    padding: 0.55rem 1.1rem;
   }
 
   .body-text {
     font-size: 0.9rem;
   }
 
-  .top-center-info,
-  .top-icon,
-  .top-social-links,
+  .hero-footer {
+    grid-template-columns: 1fr;
+    row-gap: 0.75rem;
+    margin-top: 1.6rem;
+  }
+
   .bottom-left,
-  .bottom-center,
   .bottom-right {
-    display: none;
+    align-items: flex-start;
+  }
+
+  .bottom-right .bottom-label {
+    font-size: 1.35rem;
+  }
+
+  .bottom-label {
+    font-size: 1.4rem;
   }
 }
 
+/* Phones – reorder footer visually:
+   1) View Portfolio  (bottom-left)
+   2) Contact + CTA   (bottom-right)
+   3) Copyright       (bottom-center, aligned right) */
 @media (max-width: 600px) {
+  .hero {
+    padding: 1.5rem 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-header {
+    row-gap: 0.35rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .top-label {
+    font-size: 0.7rem;
+  }
+
+  .top-sub {
+    font-size: 0.72rem;
+  }
+
+  .top-social-icon {
+    width: 16px;
+    height: 16px;
+  }
+
   .main-content {
-    padding-top: 2rem;
-    padding-bottom: 8rem;
-    gap: 1.2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.1rem;
   }
 
-  .section-1 {
-    padding-left: 5vw;
-    padding-right: 5vw;
-  }
-
-  .section-2 {
-    padding-left: 5vw;
-    padding-right: 5vw;
-  }
-
+  .section-1,
+  .section-2,
   .section-3 {
-    padding-left: 5vw;
-    padding-right: 5vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
   }
 
   .headline {
-    font-size: clamp(1.5rem, 6vw, 2.8rem);
+    font-size: clamp(1.5rem, 5.2vw, 2.1rem);
   }
 
   .tag-label {
-    font-size: 0.6rem;
-    padding: 0.5rem 1rem;
+    font-size: 1.15rem;
+    padding: 0.5rem 0.9rem;
   }
 
   .body-text {
-    font-size: 0.85rem;
+    font-size: 0.86rem;
+  }
+
+  /* footer: switch to flex and reorder */
+  .hero-footer {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* 1) portfolio first */
+  .bottom-left {
+    align-items: flex-start;
+    order: 1;
+  }
+
+  /* 2) contact + CTA second */
+  .bottom-right {
+    align-items: flex-start;
+    order: 2;
+    gap: 0.25rem;
+  }
+
+  .bottom-right .bottom-label {
+    font-size: 1.25rem;
+  }
+
+  .visit-site {
+    font-size: 0.72rem;
+  }
+
+  .visit-site--contact {
+    padding-left: 0;
+  }
+
+  /* 3) copyright last, aligned to bottom-right */
+  .bottom-center {
+    order: 3;
+    align-self: flex-end;
+    text-align: right;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  .hero {
+    padding: 1.25rem 0.75rem 1.25rem;
+  }
+
+  .headline {
+    font-size: clamp(1.35rem, 5.4vw, 1.9rem);
+  }
+
+  .tag-label {
+    font-size: 1.05rem;
+  }
+
+  .bottom-label {
+    font-size: 1.1rem;
+  }
+
+  .hero-footer {
+    gap: 0.7rem;
   }
 }
