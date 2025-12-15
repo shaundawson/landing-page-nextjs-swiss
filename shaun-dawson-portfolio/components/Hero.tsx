@@ -4,22 +4,29 @@ import React, { useEffect, useState } from 'react'
 import ContactModal from './ContactModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedinIn, faInstagram, faImdb } from '@fortawesome/free-brands-svg-icons'
-import { getVisitorId } from '../lib/fingerprint'
+import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 
 export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [visitorId, setVisitorId] = useState<string | null>(null)
+
+    const { isLoading, error, data } = useVisitorData(
+        {
+            linkedId: 'accountNum12345',
+            tag: {
+                loginAttempts24h: 8,
+            },
+        },
+        { extendedResult: true, immediate: true }
+    )
 
     useEffect(() => {
-        getVisitorId().then((id) => {
-            if (id) {
-                console.log('Fingerprint visitorId:', id)
-                setVisitorId(id)
-            } else {
-                console.log('Fingerprint visitorId not available yet')
-            }
-        })
-    }, [])
+        if (data) {
+            console.log('Fingerprint visitor data with tags:', data)
+        }
+        if (error) {
+            console.error('Fingerprint error:', error)
+        }
+    }, [data, error])
 
     const socialLinks = [
         { name: 'LinkedIn', icon: faLinkedinIn, url: 'https://linkedin.com/in/iamsdawson' },
