@@ -217,7 +217,7 @@ body {
 .bottom-left-link {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: .25rem;
   text-decoration: none;
   color: inherit;
 }
@@ -655,6 +655,7 @@ body {
   .bottom-left {
     align-items: flex-start;
     order: 1;
+    gap: .25rem;
   }
 
   /* 2) contact + CTA second */
@@ -682,6 +683,7 @@ body {
     align-self: flex-end;
     text-align: right;
   }
+
 }
 
 /* Very small phones */
@@ -699,7 +701,7 @@ body {
   }
 
   .bottom-label {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
   }
 
   .hero-footer {
