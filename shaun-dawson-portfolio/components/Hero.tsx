@@ -15,8 +15,11 @@ export default function Hero() {
             tag: {
                 loginAttempts24h: 8,
             },
+            extendedResult: true,
         },
-        { extendedResult: true, immediate: true }
+        {
+            immediate: true,
+        }
     )
 
     useEffect(() => {
@@ -48,16 +51,13 @@ export default function Hero() {
 
             {/* HEADER */}
             <header className="hero-header">
-                {/* Left spacer to preserve 3-column balance */}
                 <div aria-hidden="true" />
 
-                {/* Center name + role */}
                 <div className="top-center-info">
                     <span className="top-label">SHAUN DAWSON</span>
                     <span className="top-sub">Storyteller — Front-End Developer</span>
                 </div>
 
-                {/* Social icons */}
                 <div className="top-social-links">
                     {socialLinks.map((link) => (
                         <a
@@ -97,7 +97,6 @@ export default function Hero() {
 
             {/* FOOTER */}
             <footer className="hero-footer">
-                {/* BOTTOM LEFT - View Portfolio */}
                 <div className="bottom-left">
                     <a
                         href="https://meshaestudios.com/"
@@ -115,14 +114,12 @@ export default function Hero() {
                     </a>
                 </div>
 
-                {/* BOTTOM CENTER */}
                 <div className="bottom-center">
                     <span className="copyright-text">
                         © 2025. All Rights Reserved. — Shaun Dawson.
                     </span>
                 </div>
 
-                {/* BOTTOM RIGHT - Contact */}
                 <div className="bottom-right">
                     <button
                         onClick={handleContactClick}
@@ -144,7 +141,6 @@ export default function Hero() {
                 </div>
             </footer>
 
-            {/* Contact Modal */}
             <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     )
