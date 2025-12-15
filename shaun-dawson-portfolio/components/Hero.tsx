@@ -1,12 +1,26 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ContactModal from './ContactModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedinIn, faInstagram, faImdb } from '@fortawesome/free-brands-svg-icons'
+import { getVisitorId } from '../lib/fingerprint'
 
 export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [visitorId, setVisitorId] = useState<string | null>(null)
+
+    useEffect(() => {
+        // Only runs on client
+        getVisitorId().then(id => {
+            if (id) {
+                console.log('Fingerprint visitorId:', id)
+                setVisitorId(id)
+            } else {
+                console.log('Fingerprint visitorId not available yet')
+            }
+        })
+    }, [])
 
     const socialLinks = [
         { name: 'LinkedIn', icon: faLinkedinIn, url: 'https://linkedin.com/in/iamsdawson' },
