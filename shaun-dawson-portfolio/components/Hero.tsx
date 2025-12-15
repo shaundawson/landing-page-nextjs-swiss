@@ -11,8 +11,7 @@ export default function Hero() {
     const [visitorId, setVisitorId] = useState<string | null>(null)
 
     useEffect(() => {
-        // Only runs on client
-        getVisitorId().then(id => {
+        getVisitorId().then((id) => {
             if (id) {
                 console.log('Fingerprint visitorId:', id)
                 setVisitorId(id)
@@ -26,7 +25,7 @@ export default function Hero() {
         { name: 'LinkedIn', icon: faLinkedinIn, url: 'https://linkedin.com/in/iamsdawson' },
         { name: 'IMDB', icon: faImdb, url: 'https://www.imdb.com/name/nm17204388' },
         { name: 'Instagram', icon: faInstagram, url: 'https://instagram.com/iamsdawson' },
-        { name: 'GitHub', icon: faGithub, url: 'https://github.com/shaundawson' }
+        { name: 'GitHub', icon: faGithub, url: 'https://github.com/shaundawson' },
     ]
 
     const handleContactClick = () => {
@@ -137,7 +136,6 @@ export default function Hero() {
                     </button>
                 </div>
             </footer>
-
 
             {/* Contact Modal */}
             <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

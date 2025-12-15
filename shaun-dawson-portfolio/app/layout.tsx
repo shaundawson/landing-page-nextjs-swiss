@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 import '../lib/fontawesome'
 import Script from 'next/script'
+import { Providers } from './Providers'
 
-// 👇 Add this here, after imports
+
 declare global {
   interface Window {
     fpPromise?: Promise<any>;
@@ -76,7 +77,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased bg-white text-black">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-59JDW44VMF"
@@ -88,18 +92,6 @@ export default function RootLayout({
             function gtag(){window.dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-59JDW44VMF');
-          `}
-        </Script>
-
-        {/* Fingerprint JavaScript Agent */}
-        <Script id="fingerprint-init" strategy="afterInteractive">
-          {`
-            window.fpPromise = import('https://fpjscdn.net/v3/ikoCglMSg7f74O7QVNg')
-              .then(FingerprintJS => FingerprintJS.load())
-              .catch(err => {
-                console.error('Error loading Fingerprint:', err);
-                return null;
-              });
           `}
         </Script>
       </body>
