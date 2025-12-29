@@ -380,6 +380,11 @@ body {
   color: #e6ff02 !important;
 }
 
+#hubspot-form-container .hs-input {
+  color: #e6ff02 !important;
+
+}
+
 #hubspot-form-container .hbspt-form fieldset,
 #hubspot-form-container .hbspt-form .hs-form-field {
   margin-bottom: 1rem;
