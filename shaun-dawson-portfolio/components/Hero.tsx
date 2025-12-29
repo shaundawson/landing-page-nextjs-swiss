@@ -121,25 +121,23 @@ export default function Hero() {
                 </div>
 
                 <div className="bottom-right">
+                    {/* This mirrors bottom-left visually but triggers the modal */}
                     <button
-                        onClick={handleContactClick}
-                        className="contact-label-button"
                         type="button"
+                        onClick={handleContactClick}
+                        className="bottom-left-link bottom-right-contact"
                     >
                         <span className="bottom-label">Contact</span>
-                    </button>
-                    <button
-                        onClick={handleContactClick}
-                        className="visit-site visit-site--contact"
-                        type="button"
-                    >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#101010" strokeWidth="2">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <span>Send Shaun a Message</span>
+                        <span className="visit-site">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#101010" strokeWidth="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            <span>Send Shaun a Message</span>
+                        </span>
                     </button>
                 </div>
             </footer>
+
 
             <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>

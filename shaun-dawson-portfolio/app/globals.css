@@ -251,42 +251,23 @@ body {
 }
 
 /* BOTTOM RIGHT – Contact + CTA (desktop/tablet) */
-.bottom-right {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-end;
-}
-
-.bottom-right button {
-  position: relative;
-}
-
-.bottom-right .bottom-label {
-  text-align: right;
-  font-size: 1.75rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.contact-label-button {
-  background: none;
+.bottom-right-contact {
   border: none;
   padding: 0;
+  margin: 0;
+  background: none;
   cursor: pointer;
-  transition: opacity 0.2s ease;
-  color: #111111;
+  text-align: left;
+  font: inherit;
 }
 
-.contact-label-button:hover {
+/* Reuse same hover effect as bottom-left */
+.bottom-right-contact:hover .visit-site,
+.bottom-right-contact:hover .bottom-label {
   opacity: 0.7;
 }
 
-.contact-label-button .bottom-label {
-  display: block;
-}
-
-/* VISIT-SITE / CTA STYLE (shared) */
+/* VISIT-SITE / CTA STYLE */
 .visit-site {
   display: inline-flex;
   align-items: center;
@@ -380,7 +361,7 @@ body {
   color: #e6ff02 !important;
 }
 
-#hubspot-form-container .hs-input {
+.hs-input {
   color: #e6ff02 !important;
 
 }
