@@ -69,15 +69,15 @@ body {
 /* HEADER */
 .hero-header {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
+  grid-template-columns: 9vw 1fr auto;
+  align-items: start;
   column-gap: 1rem;
   margin-bottom: 2.25rem;
 }
 
 /* Left spacer (empty but keeps the 3-column grid) */
 .hero-header>div:first-child {
-  justify-self: start;
+  width: 100%;
 }
 
 /* TOP CENTER - Name + role */
@@ -85,7 +85,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  justify-self: center;
+  justify-self: start;
+  align-items: flex-start;
+  text-align: left;
+  margin-top: 10vh;
+  margin-left: -2vh;
 }
 
 .top-label {
@@ -594,6 +598,17 @@ body {
     align-items: flex-start;
     row-gap: 0.75rem;
     margin-bottom: 1.4rem;
+  }
+
+  .top-center-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    justify-self: start;
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 0vh;
+    margin-left: 0vh;
   }
 
   .top-label {

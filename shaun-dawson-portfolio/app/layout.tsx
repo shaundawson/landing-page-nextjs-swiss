@@ -75,8 +75,61 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning>
+        <Script
+          id="remove-colorzilla-attr"
+          strategy="beforeInteractive"
+        >
+          {`
+            (function () {
+              function stripColorZillaAttrs() {
+                var targets = [document.documentElement, document.body];
+                targets.forEach(function (node) {
+                  if (!node) return;
+                  if (node.hasAttribute('cz-shortcut-listen')) {
+                    node.removeAttribute('cz-shortcut-listen');
+                  }
+                });
+              }
+
+              stripColorZillaAttrs();
+
+              var observer = new MutationObserver(function (mutations) {
+                for (var i = 0; i < mutations.length; i++) {
+                  var mutation = mutations[i];
+                  if (
+                    mutation.type === 'attributes' &&
+                    mutation.attributeName === 'cz-shortcut-listen'
+                  ) {
+                    mutation.target.removeAttribute('cz-shortcut-listen');
+                  }
+                }
+              });
+
+              function observeIfPresent(node) {
+                if (!node) return;
+                observer.observe(node, {
+                  attributes: true,
+                  attributeFilter: ['cz-shortcut-listen'],
+                });
+              }
+
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function () {
+                  stripColorZillaAttrs();
+                  observeIfPresent(document.documentElement);
+                  observeIfPresent(document.body);
+                });
+              } else {
+                observeIfPresent(document.documentElement);
+                observeIfPresent(document.body);
+              }
+            })();
+          `}
+        </Script>
+
         {children}
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-59JDW44VMF"
