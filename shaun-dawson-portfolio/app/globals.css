@@ -701,6 +701,10 @@ body {
     /* align copyright with left edge */
     text-align: left;
   }
+
+  .copyright-text {
+    display: none;
+  }
 }
 
 /* Very small phones */
