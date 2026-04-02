@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import './globals.css'
 import '../lib/fontawesome'
 import Script from 'next/script'
-import { Providers } from './Providers'
 
 
 declare global {
@@ -76,11 +75,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased bg-white text-black">
-        <Providers>
-          {children}
-        </Providers>
-
+      <body>
+        {children}
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-59JDW44VMF"

@@ -4,32 +4,10 @@ import React, { useEffect, useState } from 'react'
 import ContactModal from './ContactModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedinIn, faInstagram, faImdb } from '@fortawesome/free-brands-svg-icons'
-import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
+
 
 export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false)
-
-    const { isLoading, error, data } = useVisitorData(
-        {
-            linkedId: 'accountNum12345',
-            tag: {
-                loginAttempts24h: 8,
-            },
-            extendedResult: true,
-        },
-        {
-            immediate: true,
-        }
-    )
-
-    useEffect(() => {
-        if (data) {
-            console.log('Fingerprint visitor data with tags:', data)
-        }
-        if (error) {
-            console.error('Fingerprint error:', error)
-        }
-    }, [data, error])
 
     const socialLinks = [
         { name: 'LinkedIn', icon: faLinkedinIn, url: 'https://linkedin.com/in/iamsdawson' },
@@ -54,7 +32,7 @@ export default function Hero() {
                 <div aria-hidden="true" />
 
                 <div className="top-center-info">
-                    <span className="top-label">SHAUN DAWSON</span>
+                    <span className="top-label">Shaun Dawson</span>
                     <span className="top-sub">Storyteller — Front-End Developer</span>
                 </div>
 
@@ -106,7 +84,7 @@ export default function Hero() {
                     >
                         <span className="bottom-label">View Portfolio</span>
                         <span className="visit-site">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#101010" strokeWidth="2">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             <span>meshaestudios.com</span>
@@ -116,7 +94,7 @@ export default function Hero() {
 
                 <div className="bottom-center">
                     <span className="copyright-text">
-                        © 2025. All Rights Reserved. — Shaun Dawson.
+                        © 2026. All Rights Reserved. — Shaun Dawson.
                     </span>
                 </div>
 
@@ -129,7 +107,7 @@ export default function Hero() {
                     >
                         <span className="bottom-label">Contact</span>
                         <span className="visit-site">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#101010" strokeWidth="2">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             <span>Send Shaun a Message</span>
