@@ -60,7 +60,7 @@ export default function Hero() {
 
                 <div className="content-section section-2">
                     <h1 className="headline">
-                        Storyteller at the intersection of race, technology and social justice. Shaun Dawson is a filmmaker and web
+                        Storyteller at the intersection of technology and social justice. Shaun Dawson is a filmmaker and web
                         developer who crafts narratives that challenge perspective.
                     </h1>
                 </div>
