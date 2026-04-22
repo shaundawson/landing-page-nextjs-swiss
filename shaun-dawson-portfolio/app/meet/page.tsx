@@ -50,7 +50,7 @@ export default function MeetingsPage() {
         <div className="meet-page__panel">
           <div
             className="meetings-iframe-container"
-            data-src="https://meetings.hubspot.com/iamsdawson1?embed=true"
+            data-src="https://meetings.hubspot.com/shaundawson/iamsdawson?embed=true"
           />
         </div>
       </section>
