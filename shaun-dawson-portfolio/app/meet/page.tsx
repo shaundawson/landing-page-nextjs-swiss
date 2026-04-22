@@ -128,7 +128,7 @@ export default function MeetingsPage() {
           color: #9ca3af;
           font-size: clamp(1rem, 1.15vw, 1.125rem);
           line-height: 1.7;
-          max-width: 62ch;
+          max-width: 42ch;
         }
 
         /* Outer wrapper around the HubSpot embed */
