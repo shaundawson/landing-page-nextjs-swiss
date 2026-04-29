@@ -1,10 +1,9 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ContactModal from './ContactModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedinIn, faInstagram, faImdb } from '@fortawesome/free-brands-svg-icons'
-
 
 export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -16,27 +15,44 @@ export default function Hero() {
         { name: 'GitHub', icon: faGithub, url: 'https://github.com/shaundawson' },
     ]
 
-    const handleContactClick = () => {
-        setIsModalOpen(true)
-    }
-
     return (
         <div className="hero">
             {/* Background */}
             <div className="hero-bg">
-                <div className="bg-overlay"></div>
+                <div className="bg-overlay" />
             </div>
 
-            {/* HEADER */}
+            {/* ── HEADER ────────────────────────────────────────── */}
+            {/* Desktop: name left, socials far right (column).     */}
+            {/* Mobile: name top, socials inline below name.        */}
             <header className="hero-header">
+                {/* Left spacer — desktop grid only */}
                 <div aria-hidden="true" />
 
                 <div className="top-center-info">
                     <span className="top-label">Shaun Dawson</span>
-                    <span className="top-sub">Storyteller — Front-End Developer</span>
+                    {/* Subtitle: replaced em dash with slash per user preference */}
+                    <span className="top-sub">Storyteller / Front-End Developer</span>
+
+                    {/* Social icons live UNDER the name on mobile only */}
+                    <div className="top-social-links--mobile">
+                        {socialLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.url}
+                                className="top-social-icon"
+                                title={link.name}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <FontAwesomeIcon icon={link.icon} />
+                            </a>
+                        ))}
+                    </div>
                 </div>
 
-                <div className="top-social-links">
+                {/* Social icons on the right — desktop only */}
+                <div className="top-social-links--desktop">
                     {socialLinks.map((link) => (
                         <a
                             key={link.name}
@@ -52,7 +68,9 @@ export default function Hero() {
                 </div>
             </header>
 
-            {/* MAIN CONTENT */}
+            {/* ── MAIN CONTENT ──────────────────────────────────── */}
+            {/* Desktop: progressive right-indentation per section. */}
+            {/* Mobile: uniform padding, tighter gaps.              */}
             <main className="main-content">
                 <div className="content-section section-1">
                     <span className="tag-label">I tell stories.</span>
@@ -60,20 +78,24 @@ export default function Hero() {
 
                 <div className="content-section section-2">
                     <h1 className="headline">
-                        Storyteller at the intersection of technology and social justice. Shaun Dawson is a filmmaker and web
-                        developer who crafts narratives that challenge perspective.
+                        Storyteller at the intersection of technology and social justice.
+                        Shaun Dawson is a filmmaker and web developer who crafts narratives
+                        that challenge perspective.
                     </h1>
                 </div>
 
                 <div className="content-section section-3">
                     <p className="body-text">
-                        With 9 years of solving complex technical problems and deep expertise in React, AWS, and product strategy,
-                        Shaun brings both cinematic precision and technical mastery to work that actually moves something.
+                        With 9 years of solving complex technical problems and deep expertise
+                        in React, AWS, and product strategy, Shaun brings both cinematic
+                        precision and technical mastery to work that actually moves something.
                     </p>
                 </div>
             </main>
 
-            {/* FOOTER */}
+            {/* ── FOOTER ────────────────────────────────────────── */}
+            {/* Desktop: 3-column grid (left CTA / copyright / right CTA). */}
+            {/* Mobile: stacked column, CTAs full-width, copyright hidden.  */}
             <footer className="hero-footer">
                 <div className="bottom-left">
                     <a
@@ -94,15 +116,14 @@ export default function Hero() {
 
                 <div className="bottom-center">
                     <span className="copyright-text">
-                        © 2026. All Rights Reserved. — Shaun Dawson.
+                        © 2026. All Rights Reserved. Shaun Dawson.
                     </span>
                 </div>
 
                 <div className="bottom-right">
-                    {/* This mirrors bottom-left visually but triggers the modal */}
                     <button
                         type="button"
-                        onClick={handleContactClick}
+                        onClick={() => setIsModalOpen(true)}
                         className="bottom-left-link bottom-right-contact"
                     >
                         <span className="bottom-label">Contact</span>
@@ -115,7 +136,6 @@ export default function Hero() {
                     </button>
                 </div>
             </footer>
-
 
             <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
