@@ -628,8 +628,8 @@ body {
 
   /* Headline: readable but not dominating */
   .headline {
-    font-size: clamp(1.65rem, 5.5vw, 2.2rem);
-    font-weight: 700;
+    font-size: clamp(1.45rem, 5.5vw, 2.2rem);
+    font-weight: 500;
     line-height: 1.05;
     letter-spacing: -0.04em;
   }
