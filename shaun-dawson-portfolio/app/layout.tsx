@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   creator: 'Shaun Dawson',
   publisher: 'Meshae Studios',
 
-  metadataBase: new URL('https://iamsdawson.com'),
+  metadataBase: new URL('https://www.iamsdawson.com'),
   alternates: {
-    canonical: 'https://iamsdawson.com',
+    canonical: 'https://www.iamsdawson.com',
   },
 
   icons: {
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
       'Black queer developer and filmmaker building story-driven websites for creators and small teams. Based in Jacksonville, FL. Founder of Meshae Studios.',
     images: [
       {
-        url: 'https://iamsdawson.com/og-image.jpg',
+        url: 'https://www.iamsdawson.com/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Shaun Dawson — Front-End Developer & Filmmaker based in Jacksonville, FL',
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: 'Shaun Dawson — Front-End Developer & Filmmaker',
     description:
       'Black queer developer and filmmaker building story-driven websites for creators and small teams. Founder of Meshae Studios.',
-    images: ['https://iamsdawson.com/og-image.jpg'],
+    images: ['https://www.iamsdawson.com/og-image.jpg'],
   },
 
   // ── Robots ─────────────────────────────────────────────────────────────────
