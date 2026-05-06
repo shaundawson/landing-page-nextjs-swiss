@@ -3,23 +3,47 @@ import './globals.css'
 import '../lib/fontawesome'
 import Script from 'next/script'
 
-
 declare global {
   interface Window {
-    fpPromise?: Promise<any>;
+    fpPromise?: Promise<any>
   }
 }
 
-export const meta: Metadata = {
-  title: 'Shaun Dawson | Storyteller & Front-End Developer | Web Design & Video',
-  description: 'Shaun Dawson is an award-winning filmmaker and front-end web developer specializing in React, web design, and storytelling. Creative director at Meshae Studios. Available for film production and web development projects.',
-  keywords: 'filmmaker, front-end developer, web developer, web designer, React developer, video production, design systems, creative director, technical consultant, web development Jacksonville',
-  authors: [{ name: 'Shaun Dawson' }],
+export const metadata: Metadata = {
+  // ── Title ──────────────────────────────────────────────────────────────────
+  // Format: Name | Primary Role | Secondary Role | Location signal
+  // AI systems extract the pipe-separated tokens as discrete facts.
+  title: 'Shaun Dawson | Front-End Developer & Filmmaker | Jacksonville, FL',
+
+  // ── Description ────────────────────────────────────────────────────────────
+  // Lead with name + strongest credentials. Mention studio, location, and
+  // the specific audience (creators, small teams) so AI can match intent.
+  description:
+    'Shaun Dawson is a Black queer front-end developer and filmmaker based in Jacksonville, FL. Through Meshae Studios, Shaun builds budget-friendly websites, apps, and landing pages for creators, organizers, and small teams who care about tech, culture, and social justice.',
+
+  // ── Keywords ───────────────────────────────────────────────────────────────
+  keywords: [
+    'Black web developer Jacksonville',
+    'queer front-end developer',
+    'filmmaker Jacksonville FL',
+    'React developer for nonprofits',
+    'affordable web design for creators',
+    'Meshae Studios',
+    'story-driven web design',
+    'social justice web developer',
+    'budget-friendly landing pages',
+    'front-end developer for small teams',
+  ],
+
+  authors: [{ name: 'Shaun Dawson', url: 'https://iamsdawson.com' }],
   creator: 'Shaun Dawson',
+  publisher: 'Meshae Studios',
+
   metadataBase: new URL('https://iamsdawson.com'),
   alternates: {
     canonical: 'https://iamsdawson.com',
   },
+
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -27,31 +51,39 @@ export const meta: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
+
+  // ── Open Graph ─────────────────────────────────────────────────────────────.
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://iamsdawson.com',
     siteName: 'Shaun Dawson',
-    title: 'Shaun Dawson | Storyteller & Front-End Developer',
-    description: 'Award-winning filmmaker and front-end web developer creating disruptive digital experiences and compelling visual stories.',
+    title: 'Shaun Dawson — Front-End Developer & Filmmaker',
+    description:
+      'Black queer developer and filmmaker building story-driven websites for creators and small teams. Based in Jacksonville, FL. Founder of Meshae Studios.',
     images: [
       {
         url: 'https://iamsdawson.com/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Shaun Dawson - Storyteller & Front-End Developer',
+        alt: 'Shaun Dawson — Front-End Developer & Filmmaker based in Jacksonville, FL',
         type: 'image/jpeg',
       },
     ],
   },
+
+  // ── Twitter / X Card ───────────────────────────────────────────────────────
   twitter: {
     card: 'summary_large_image',
     site: '@iamsdawson',
     creator: '@iamsdawson',
-    title: 'Shaun Dawson | Storyteller & Front-End Developer',
-    description: 'Award-winning filmmaker and front-end web developer creating disruptive digital experiences and compelling visual stories',
+    title: 'Shaun Dawson — Front-End Developer & Filmmaker',
+    description:
+      'Black queer developer and filmmaker building story-driven websites for creators and small teams. Founder of Meshae Studios.',
     images: ['https://iamsdawson.com/og-image.jpg'],
   },
+
+  // ── Robots ─────────────────────────────────────────────────────────────────
   robots: {
     index: true,
     follow: true,
@@ -63,8 +95,10 @@ export const meta: Metadata = {
       'max-snippet': -1,
     },
   },
+
+  // ── Verification ───────────────────────────────────────────────────────────
   verification: {
-    google: 'your-google-verification-code',
+    google: 'klYEfPOwzg2tngsg6KtvgCP9d_Hzu2YCizkBsn1n23M',
   },
 }
 
@@ -76,10 +110,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        <Script
-          id="remove-colorzilla-attr"
-          strategy="beforeInteractive"
-        >
+
+        {/* ── ColorZilla attribute scrubber ────────────────────────────────── */}
+        <Script id="remove-colorzilla-attr" strategy="beforeInteractive">
           {`
             (function () {
               function stripColorZillaAttrs() {
@@ -91,9 +124,7 @@ export default function RootLayout({
                   }
                 });
               }
-
               stripColorZillaAttrs();
-
               var observer = new MutationObserver(function (mutations) {
                 for (var i = 0; i < mutations.length; i++) {
                   var mutation = mutations[i];
@@ -105,7 +136,6 @@ export default function RootLayout({
                   }
                 }
               });
-
               function observeIfPresent(node) {
                 if (!node) return;
                 observer.observe(node, {
@@ -113,7 +143,6 @@ export default function RootLayout({
                   attributeFilter: ['cz-shortcut-listen'],
                 });
               }
-
               if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', function () {
                   stripColorZillaAttrs();
@@ -128,9 +157,86 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* ── JSON-LD Structured Data ──────────────────────────────────────── */}
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Person',
+                  '@id': 'https://iamsdawson.com/#person',
+                  name: 'Shaun Dawson',
+                  jobTitle: 'Front-End Developer & Filmmaker',
+                  description:
+                    'Black queer front-end developer and filmmaker based in Jacksonville, FL. Builds budget-friendly websites, apps, and landing pages for creators, organizers, and small teams through Meshae Studios.',
+                  url: 'https://iamsdawson.com',
+                  image: 'https://iamsdawson.com/og-image.jpg',
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Jacksonville',
+                    addressRegion: 'FL',
+                    addressCountry: 'US',
+                  },
+                  // sameAs is the most important field for AI entity recognition.
+                  // It links every profile you own back to one identity.
+                  sameAs: [
+                    'https://iamsdawson.com',
+                    'https://meshaestudios.com',
+                    'https://linkedin.com/in/iamsdawson',
+                    'https://github.com/shaundawson',
+                    'https://www.imdb.com/name/nm17204388',
+                    'https://instagram.com/iamsdawson',
+                  ],
+                  // knowsAbout helps AI match you to relevant searches.
+                  knowsAbout: [
+                    'Front-End Development',
+                    'React',
+                    'Next.js',
+                    'Web Design',
+                    'Filmmaking',
+                    'Video Production',
+                    'Storytelling',
+                    'Landing Pages',
+                    'Social Justice Technology',
+                    'Community-Centered Design',
+                  ],
+                },
+                {
+                  '@type': 'ProfessionalService',
+                  '@id': 'https://iamsdawson.com/#studio',
+                  name: 'Meshae Studios',
+                  url: 'https://meshaestudios.com',
+                  founder: { '@id': 'https://iamsdawson.com/#person' },
+                  description:
+                    'Web design and development studio serving creators, organizers, and small teams who care about tech, culture, and social justice. Based in Jacksonville, FL.',
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Jacksonville',
+                    addressRegion: 'FL',
+                    addressCountry: 'US',
+                  },
+                  areaServed: 'United States',
+                  serviceType: [
+                    'Web Development',
+                    'Web Design',
+                    'Landing Page Design',
+                    'Film Production',
+                    'Creative Direction',
+                  ],
+                  priceRange: '$$',
+                },
+              ],
+            }),
+          }}
+        />
+
         {children}
 
-        {/* Google Analytics */}
+        {/* ── Google Analytics ─────────────────────────────────────────────── */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-59JDW44VMF"
           strategy="afterInteractive"
@@ -143,6 +249,7 @@ export default function RootLayout({
             gtag('config', 'G-59JDW44VMF');
           `}
         </Script>
+
       </body>
     </html>
   )

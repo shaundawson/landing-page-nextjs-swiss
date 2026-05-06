@@ -30,6 +30,15 @@ body {
   overflow-x: hidden;
 }
 
+.body-link {
+  color: #e6ff02;
+  text-decoration: none;
+}
+
+.body-link:hover {
+  text-decoration: underline;
+}
+
 /* ============================================================
    HERO WRAPPER
    Full-viewport height, flex column so header/main/footer
