@@ -264,7 +264,8 @@ body {
   gap: 0.5rem;
 }
 
-.bottom-left-link {
+.bottom-left-link,
+.bottom-right-contact {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
